@@ -66,7 +66,7 @@ function quantidadeCartas(){
 
     }
 
-    while (cartas > 12){
+    while (cartas > 14){
         cartas = Number(prompt("Quantas cartas"));
     }
 
@@ -112,36 +112,6 @@ function quantidadeCartas(){
 
 
 
-// ACERTOU E ERROU
-
-function acertou(){
-    acertos += 2;
-    let result = numeroDeCartas-acertos
-
-    if(result<2){
-        alert("PARABÉNS!!! \nVocê ganhou em " + jogadas + " jogadas \n" +
-         "Seu tempo foi de:\n" +
-         minutos +" minutos"+ " e " + segundos + " segundos")
-        // const reiniciar = prompt("Quer jogar novamente?")
-        clearInterval(contar)
-        segundos = 0;
-    }
-    
-}
-
-function errou(){
-    console.log("errou")
-    localCarta1.classList.add("retomar")
-    localCarta1.classList.remove("girar")
-    localCarta1.classList.remove("virada")
-
-    localCarta2.classList.add("retomar")
-    localCarta2.classList.remove("girar")
-    localCarta2.classList.remove("virada")
-}
-
-
-
 // FUÇÃO PARA VIRAR AS CARTAS
 
 function virarCarta(item){
@@ -163,10 +133,6 @@ function virarCarta(item){
             localCarta1 = item;
 
             carta1 = item.innerHTML
-
-            console.log(item)
-
-            console.log("primeira carta ->" + cartaVirada)
 
             cartaVirada ++
 
@@ -195,7 +161,6 @@ function virarCarta(item){
         
             }
     
-            console.log("segunda carta ->" + cartaVirada)
             cartaVirada = 0;
             carta1 = ""
             carta2 = ""
@@ -203,6 +168,62 @@ function virarCarta(item){
         }
     }
 
+}
+
+// ACERTOU E ERROU
+
+function acertou(){
+    acertos += 2;
+    let result = numeroDeCartas-acertos
+
+    if(result<2){
+        alert("PARABÉNS!!! \nVocê ganhou em " + jogadas + " jogadas \n" +
+         "Seu tempo foi de:\n" +
+         minutos +" minutos"+ " e " + segundos + " segundos")
+        clearInterval(contar)
+        segundos = 0;
+        const reiniciar = prompt("Quer jogar novamente? sim ou nao")
+        const local = document.querySelector(".cartas")
+
+        if(reiniciar==="sim"){
+
+            let nodeList = document.querySelectorAll(".girar")
+
+            for(let i=0; i< nodeList.length ;i++){
+                const retirar = document.querySelector(".girar")
+                retirar.classList.remove("girar")
+                retirar.classList.remove("virada")
+            }
+
+            let acharTempo = document.querySelector(".relogio")
+            acharTempo.innerHTML = 0 + " : " + 0
+
+            acertos = 0;
+            jogadas = 0;
+            segundos = 0;
+            minutos = 0;
+            local.innerHTML = ""
+
+            quantidadeCartas()
+        }
+        else{
+            alert("Obrigado por jogar!")
+            local.innerHTML = ""
+            let acharTempo = document.querySelector(".relogio")
+            acharTempo.innerHTML = 0 + " : " + 0
+        }
+    }
+    
+}
+
+function errou(){
+    localCarta1.classList.add("retomar")
+    localCarta1.classList.remove("girar")
+    localCarta1.classList.remove("virada")
+
+    localCarta2.classList.add("retomar")
+    localCarta2.classList.remove("girar")
+    localCarta2.classList.remove("virada")
 }
 
 
