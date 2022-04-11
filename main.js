@@ -110,7 +110,47 @@ function quantidadeCartas(){
     cronometro()
 }
 
+// RECOMEÇAR
 
+function recomecar(){
+
+        let reiniciar = prompt("Quer jogar novamente?")
+        const local = document.querySelector(".cartas")
+
+        if(reiniciar==="sim"){
+
+            let nodeList = document.querySelectorAll(".girar")
+
+            for(let i=0; i< nodeList.length ;i++){
+                const retirar = document.querySelector(".girar")
+                retirar.classList.remove("girar")
+                retirar.classList.remove("virada")
+            }
+
+            let acharTempo = document.querySelector(".relogio")
+            acharTempo.innerHTML = 0 + " : " + 0
+
+            acertos = 0;
+            jogadas = 0;
+            segundos = 0;
+            minutos = 0;
+            local.innerHTML = ""
+
+            quantidadeCartas()
+        }
+        else{
+            if(reiniciar === "não"){
+                alert("Obrigado por jogar!")
+                local.innerHTML = ""
+                let acharTempo = document.querySelector(".relogio")
+                acharTempo.innerHTML = 0 + " : " + 0
+            }
+            else{
+                alert("sim - jogar novamente\nnão - sair da partida")
+                recomecar()
+            }
+        }
+}
 
 // FUÇÃO PARA VIRAR AS CARTAS
 
@@ -182,36 +222,7 @@ function acertou(){
          minutos +" minutos"+ " e " + segundos + " segundos")
         clearInterval(contar)
         segundos = 0;
-        const reiniciar = prompt("Quer jogar novamente? sim ou nao")
-        const local = document.querySelector(".cartas")
-
-        if(reiniciar==="sim"){
-
-            let nodeList = document.querySelectorAll(".girar")
-
-            for(let i=0; i< nodeList.length ;i++){
-                const retirar = document.querySelector(".girar")
-                retirar.classList.remove("girar")
-                retirar.classList.remove("virada")
-            }
-
-            let acharTempo = document.querySelector(".relogio")
-            acharTempo.innerHTML = 0 + " : " + 0
-
-            acertos = 0;
-            jogadas = 0;
-            segundos = 0;
-            minutos = 0;
-            local.innerHTML = ""
-
-            quantidadeCartas()
-        }
-        else{
-            alert("Obrigado por jogar!")
-            local.innerHTML = ""
-            let acharTempo = document.querySelector(".relogio")
-            acharTempo.innerHTML = 0 + " : " + 0
-        }
+        recomecar()
     }
     
 }
