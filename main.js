@@ -79,13 +79,13 @@ function quantidadeCartas(){
     numeroDeCartas = cartas;
 
     const gif = [
-    'bobrossparrot.gif','bobrossparrot.gif',
-    'explodyparrot.gif','explodyparrot.gif',
-    'fiestaparrot.gif','fiestaparrot.gif',
-    'metalparrot.gif','metalparrot.gif',
-    'revertitparrot.gif','revertitparrot.gif',
-    'tripletsparrot.gif','tripletsparrot.gif',
-    'unicornparrot.gif','unicornparrot.gif'
+    'bobrossparrot','bobrossparrot',
+    'explodyparrot','explodyparrot',
+    'fiestaparrot','fiestaparrot',
+    'metalparrot','metalparrot',
+    'revertitparrot','revertitparrot',
+    'tripletsparrot','tripletsparrot',
+    'unicornparrot','unicornparrot'
     ]
 
     let array = []
@@ -101,7 +101,7 @@ function quantidadeCartas(){
         const local = document.querySelector(".cartas")
 
         local.innerHTML += `<div class="carta" onclick="virarCarta(this)"><div class="verso face">
-        <img src="./Imagens/unicornparrot.gif"></div><div class="frente face">
+        <img src="./Imagens/${embaralhado[contador]}.gif"></div><div class="frente face">
         <img src="./Imagens/front.png"></div></div>`
 
         // ${embaralhado[contador]}
