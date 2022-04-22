@@ -100,7 +100,11 @@ function quantidadeCartas(){
 
         const local = document.querySelector(".cartas")
 
-        local.innerHTML += `<div class="carta" onclick="virarCarta(this)"><div class="verso face"><img src="./Imagens/${embaralhado[contador]}"></div><div class="frente face"><img src="./Imagens/front.png"></div></div>`
+        local.innerHTML += `<div class="carta" onclick="virarCarta(this)"><div class="verso face">
+        <img src="./Imagens/unicornparrot.gif"></div><div class="frente face">
+        <img src="./Imagens/front.png"></div></div>`
+
+        // ${embaralhado[contador]}
 
         contador ++;
     }
